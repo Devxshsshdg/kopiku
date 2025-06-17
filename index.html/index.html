@@ -1,116 +1,46 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kopi Kenangan - Kedai Kopi Berkualitas</title>
-    <meta name="description" content="Nikmati kopi spesial dan suasana nyaman di Kopi Kenangan. Temukan berbagai varian kopi dan hidangan lezat.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<!-- Header & Navbar -->
-<header>
-  <div class="container header-container">
-    <a href="#hero" class="logo">
-      <img src="logokopi.jpg" alt="Kopi Kenangan Logo" style="width: 50px; height: 50px; border-radius: 50%;">
-      Kopi<span>Kenangan</span>
-    </a>
 
-    <ul class="nav-menu">
-      <li><a href="#hero" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#lokasi">Lokasi</a></li>
-      <li><a href="#contact">Kontak</a></li>
-    </ul>
 
-    <div class="hamburger" id="hamburger">
-      <i class="fas fa-bars"></i>
-    </div>
-  </div>
-</header>
 
-    
-<!-- Sidebar Mobile -->
-<div class="sidebar" id="sidebar">
-  <span class="close-btn" onclick="closeSidebar()">✖</span>
-  <img src="logokopi.jpg" alt="Sidebar Logo" />
-  <ul>
-    <li><a href="#home" onclick="closeSidebar()">Home</a></li>
-    <li><a href="#about" onclick="closeSidebar()">About</a></li>
-    <li><a href="#menu" onclick="closeSidebar()">Menu</a></li>
-    <li><a href="#lokasi" onclick="closeSidebar()">Lokasi</a></li>
-    <li><a href="#contact" onclick="closeSidebar()">Kontak</a></li>
-  </ul>
-</div>
-    
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .lokasi-container {
+                flex-direction: column;
+            }
+        }
    
-    <script>
-      const hamburger = document.getElementById('hamburger');
-      const sidebar = document.getElementById('sidebar');
-    
-      hamburger.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-      });
-    
-      function closeSidebar() {
-        sidebar.classList.remove('active');
-      }
-    
-
-      
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                
-                if (target) {
-                    // Close sidebar if open
-                    sidebar.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Terima kasih atas pesan Anda! Kami akan segera menghubungi Anda.');
-            this.reset();
-        });
-        
-        // Active navigation link based on scroll position
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-menu a, .sidebar-menu a');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html> 
